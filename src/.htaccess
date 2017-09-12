@@ -1,0 +1,5 @@
+AuthName "Authentifizierung"                 
+AuthType Basic    
+AuthUserFile /rcl/www/.htusers
+require user istador moellmann
+options +indexes

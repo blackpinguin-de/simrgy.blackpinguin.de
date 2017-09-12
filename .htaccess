@@ -1,0 +1,27 @@
+<Files "(mysql|funktionen).php">
+  Require all denied
+</Files>
+
+<If "%{HTTP_REFERER} != ''">
+  RewriteEngine On
+
+  RewriteCond %{HTTP_REFERER} ^http://games\.blackpinguin\.de
+  RewriteRule .* - [env=b:true]
+  RewriteCond %{HTTP_REFERER} ^https://games\.blackpinguin\.de
+  RewriteRule .* - [env=bs:true]
+  RewriteCond %{HTTP_REFERER} ^http://games\.localhost
+  RewriteRule .* - [env=l:true]
+  RewriteCond %{HTTP_REFERER} ^https://games\.localhost
+  RewriteRule .* - [env=ls:true]
+  RewriteCond %{HTTP_REFERER} ^http://games\.server
+  RewriteRule .* - [env=s:true]
+  RewriteCond %{HTTP_REFERER} ^https://games\.server
+  RewriteRule .* - [env=ss:true]
+
+  Header set X-Frame-Options: "allow-from http://games.blackpinguin.de/"  env=b
+  Header set X-Frame-Options: "allow-from https://games.blackpinguin.de/" env=bs
+  Header set X-Frame-Options: "allow-from http://games.localhost/"  env=l
+  Header set X-Frame-Options: "allow-from https://games.localhost/" env=sl
+  Header set X-Frame-Options: "allow-from http://games.server/"  env=s
+  Header set X-Frame-Options: "allow-from https://games.server/" env=ss
+</If>
