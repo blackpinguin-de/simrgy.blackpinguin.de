@@ -2,26 +2,50 @@
   Require all denied
 </Files>
 
-<If "%{HTTP_REFERER} != ''">
+<If "%{HTTP_REFERER} =~ m#^https?://games\.#i">
   RewriteEngine On
 
-  RewriteCond %{HTTP_REFERER} ^http://games\.blackpinguin\.de
+  RewriteCond %{HTTP_REFERER} ^http://games\.blackpinguin\.de/
   RewriteRule .* - [env=b:true]
-  RewriteCond %{HTTP_REFERER} ^https://games\.blackpinguin\.de
+  RewriteCond %{HTTP_REFERER} ^https://games\.blackpinguin\.de/
   RewriteRule .* - [env=bs:true]
-  RewriteCond %{HTTP_REFERER} ^http://games\.localhost
+  RewriteCond %{HTTP_REFERER} ^http://games\.localhost/
   RewriteRule .* - [env=l:true]
-  RewriteCond %{HTTP_REFERER} ^https://games\.localhost
+  RewriteCond %{HTTP_REFERER} ^https://games\.localhost/
   RewriteRule .* - [env=ls:true]
-  RewriteCond %{HTTP_REFERER} ^http://games\.server
+  RewriteCond %{HTTP_REFERER} ^http://games\.server/
   RewriteRule .* - [env=s:true]
-  RewriteCond %{HTTP_REFERER} ^https://games\.server
+  RewriteCond %{HTTP_REFERER} ^https://games\.server/
   RewriteRule .* - [env=ss:true]
-
-  Header set X-Frame-Options: "allow-from http://games.blackpinguin.de/"  env=b
-  Header set X-Frame-Options: "allow-from https://games.blackpinguin.de/" env=bs
-  Header set X-Frame-Options: "allow-from http://games.localhost/"  env=l
-  Header set X-Frame-Options: "allow-from https://games.localhost/" env=sl
-  Header set X-Frame-Options: "allow-from http://games.server/"  env=s
-  Header set X-Frame-Options: "allow-from https://games.server/" env=ss
 </If>
+
+<If "(%{HTTP_REFERER} !~ m#^https?://games\.#i) && (%{HTTP_COOKIE} =~ m#cors=https?://games\.#i)">
+  RewriteEngine On
+
+  RewriteCond %{HTTP_COOKIE} cors=http://games\.blackpinguin\.de/
+  RewriteRule .* - [env=b:true]
+  RewriteCond %{HTTP_COOKIE} cors=https://games\.blackpinguin\.de/
+  RewriteRule .* - [env=bs:true]
+  RewriteCond %{HTTP_COOKIE} cors=http://games\.localhost/
+  RewriteRule .* - [env=l:true]
+  RewriteCond %{HTTP_COOKIE} cors=https://games\.localhost/
+  RewriteRule .* - [env=ls:true]
+  RewriteCond %{HTTP_COOKIE} cors=http://games\.server/
+  RewriteRule .* - [env=s:true]
+  RewriteCond %{HTTP_COOKIE} cors=https://games\.server/
+  RewriteRule .* - [env=ss:true]
+</If>
+
+Header set X-Frame-Options: "allow-from http://games.blackpinguin.de/"  env=b
+Header set X-Frame-Options: "allow-from https://games.blackpinguin.de/" env=bs
+Header set X-Frame-Options: "allow-from http://games.localhost/"  env=l
+Header set X-Frame-Options: "allow-from https://games.localhost/" env=sl
+Header set X-Frame-Options: "allow-from http://games.server/"  env=s
+Header set X-Frame-Options: "allow-from https://games.server/" env=ss
+
+Header set Set-Cookie: "cors=http://games.blackpinguin.de/; path=/;" env=b
+Header set Set-Cookie: "cors=https://games.blackpinguin.de/; path=/;" env=bs
+Header set Set-Cookie: "cors=http://games.localhost/; path=/;" env=l
+Header set Set-Cookie: "cors=https://games.localhost/; path=/;" env=sl
+Header set Set-Cookie: "cors=http://games.server/; path=/;" env=s
+Header set Set-Cookie: "cors=https://games.server/; path=/;" env=ss
