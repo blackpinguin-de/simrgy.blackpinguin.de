@@ -1,0 +1,75 @@
+﻿<!doctype html public "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="de">
+<head>
+	<title>Sim'rgy</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<style type="text/css">
+		<!--
+		#applet{ text-align:center; }
+		td.left{ text-align:right; }
+		td.mid{ text-align:center; width:120px; }
+		td.right{ text-align:left; }
+		-->
+	</style>
+</head>
+<body>
+
+Aufl&ouml;sungen: <a href="735.html">735x555</a> <a href="800.html">800x600</a> <a href="900.html">900x700</a> 1220x980
+<br>
+
+<div id="applet">
+	<noscript>JavaScript wird benötigt.</noscript>
+	<script type="text/javascript" src="deployJava.js"></script>
+	<script type="text/javascript">
+	if(navigator.javaEnabled())
+		{
+		if(deployJava.versionCheck("1.6.0+")){document.write("<applet archive='simrgy.jar, jlayer1.0.1.jar' code=simrgy.applet.Main.class width='1220' height='980'></applet>");}
+		else{document.write("Zum Spielen wird mindestens die Java Version 1.6.0 benötigt.");}
+		}
+	else{document.write("Java wird zum Spielen benötigt.");}
+	</script>
+</div>
+
+<p>Sim'rgy ist ein Aufbau-Simulations-Spiel, von Robin C. Ladiges und Sebastian Möllmann.
+<br/>Entwickelt wurde es im Sommersemester 2011 an der Hochschule für Angewandte Wissenschaften Hamburg im Rahmen des Wahlpflichtmodules Serious Games.
+<br/>Technisch handelt es sich, um ein Java-Applet. Die Engine ist eine Eigenentwicklung, die bis auf AWT, zum Zeichnen von 2D-Grafiken mittels Graphics-Objekt, lediglich JavaZoom JLayer, zum Abspielen von Musik und Sounds, verwendet.
+</p>
+
+<br>
+<br>
+
+<h3>Feedback</h3>
+
+<div>
+ <form method="post" action="fb.php">
+  <div style="float:left;">
+   <table>
+	<tr><th>Verständlichkeit</th> <td class="left">komplex</td> <td class="mid"><input type="radio" name="usability" value="1"><input  type="radio" name="usability" value="2"><input type="radio" name="usability" value="3" checked><input type="radio" name="usability" value="4"><input type="radio" name="usability" value="5"></td> <td class="right">intuitiv</td></tr>
+	<tr><th>Schwierigkeit</th> <td class="left">einfach</td> <td class="mid"><input type="radio" name="difficulty" value="1"><input type="radio" name="difficulty" value="2"><input type="radio" name="difficulty" value="3" checked><input type="radio" name="difficulty" value="4"><input type="radio" name="difficulty" value="5"></td> <td class="right">schwer</td></tr>
+	<tr><th>Grafiken</th> <td class="left">häßlich</td> <td class="mid"><input type="radio" name="graphic" value="1"><input type="radio" name="graphic" value="2"><input type="radio" name="graphic" value="3" checked><input type="radio" name="graphic" value="4"><input type="radio" name="graphic" value="5"></td> <td class="right">schön</td></tr>
+	<tr><th>Musikauswahl</th> <td class="left">schlecht</td> <td class="mid"><input type="radio" name="music" value="1"><input type="radio" name="music" value="2"><input type="radio" name="music" value="3" checked><input type="radio" name="music" value="4"><input type="radio" name="music" value="5"></td> <td class="right">gut</td></tr>
+	<tr><th>Spaß</th> <td class="left">wenig</td> <td class="mid"><input type="radio" name="fun" value="1"><input type="radio" name="fun" value="2"><input type="radio" name="fun" value="3" checked><input type="radio" name="fun" value="4"><input type="radio" name="fun" value="5"></td> <td class="right">viel</td></tr>
+	<tr><th>Ladezeit</th> <td class="left">langsam</td> <td class="mid"><input type="radio" name="load" value="1"><input type="radio" name="load" value="2"><input type="radio" name="load" value="3" checked><input type="radio" name="load" value="4"><input type="radio" name="load" value="5"></td> <td class="right">schnell</td></tr>
+	<tr><th>Spielfluß</th> <td class="left">unterbrochen</td> <td class="mid"><input type="radio" name="lag" value="1"><input type="radio" name="lag" value="2"><input type="radio" name="lag" value="3" checked><input type="radio" name="lag" value="4"><input type="radio" name="lag" value="5"></td> <td class="right">flüssig</td></tr>
+	<tr><th>Allgemein</th> <td class="left">schlecht</td> <td class="mid"><input type="radio" name="rating" value="1"><input type="radio" name="rating" value="2"><input type="radio" name="rating" value="3" checked><input type="radio" name="rating" value="4"><input type="radio" name="rating" value="5"></td> <td class="right">gut</td></tr>
+	<tr><th>Fehlermeldung</th> <td colspan="3"><textarea cols="35" rows="4" name="errors"></textarea></td> 
+	<tr><th>Anmerkungen</th> <td colspan="3"><textarea cols="35" rows="4" name="annotations"></textarea></td> 
+   </table>
+  </div>
+  <div style="float:right;">
+   <div id="fb-root"></div>
+   <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
+   <fb:like-box href="http://www.facebook.com/pages/Simrgy/223659627658627" width="210" show_faces="false" header="false"></fb:like-box>
+  </div>
+  <div style="clear:both;"></div>
+  <br><input type="submit" value="abschicken">
+ </form>
+</div>
+
+
+<br>
+<br>
+<a href="https://blackpinguin.de/?s=imp">Impressum</a>
+
+</body>
+</html>
